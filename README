@@ -1,0 +1,85 @@
+With this sketch, it is possible to control Arduino via HTTP GET requisitions
+using a REST-style interface. It uses Ethernet Shield based on Wiznet W5100
+chip. Based on:
+
+- RESTDuino (https://github.com/jjg/RESTduino) to interpret the 
+REST-style requisitions;
+
+- EthernetSetup (http://bit.ly/19ncowe) to allow to change Arduino's
+network configuration using a web-based interface.
+
+Author: Renato Candido <renato@liria.com.br>
+Copyright 2013
+License: GPL
+
+INSTALLING
+----------
+
+First of all, you should upload the sketch to your Arduino using the
+Arduino IDE. After the first upload, the IP address of Arduino is set
+to 192.168.1.150.
+
+Pin 8, which functions as a network configuration reset switch, should
+be connected to ground.
+
+Since it requires Ethernet Shield attached to Arduino, it is not possible
+to use pins 10, 11, 12, 13, which are use in the communication between
+Arduino and the Shield.
+
+CHANGING THE IP ADDRESS
+-----------------------
+
+Using a computer configured in the 192.168.1.0 network, you should be 
+able to access the web-based interface to configure Arduino's IP address
+by accessing http://192.168.1.150/setup on a web browser.
+
+After setting up MAC, IP, mask and gateway, you should press "SUBMIT" and
+reset your Arduino using the reset button.
+
+RESETING NETWORK CONFIGURATION
+------------------------------
+
+To reset the network configuration, you should connect the RESETBUTTON pin
+(which is, by default, pin 8) to +5V and wait 3s. After that, you should
+reset Arduino using the reset button and the IP address should be set to
+192.168.1.150.
+
+USING
+-----
+
+Via HTTP requisitions it is possible to turn a digital pin high or low,
+read a digital pin, set a PWM pin with an arbitrary value and read an
+analog pin.
+
+TURNING DIGITAL PINS HIGH OR LOW
+--------------------------------
+
+To turn a digital pin high, for example, pin 3, you may access:
+http://ip-address/3/HIGH
+
+Similarly, to turn it LOW, you may access:
+http://ip-address/3/LOW
+
+READING DIGITAL PINS
+--------------------
+
+To read a state of a digital pin, for example, pin 3, you may access:
+http://ip-address/3
+
+By accessing this URL you should receive a JSON containing the PIN state
+as answer.
+
+SETTING PWM PINS
+----------------
+
+To set pin 3 with a PWM value of 150, you should access:
+http://ip-address/3/150
+
+READING ANALOG PINS
+-------------------
+
+To read the value of an analog pin, for example, pin A1, you may access:
+http://ip-address/A1
+
+By accessing this URL you should receive a JSON containing the PIN value
+as answer.
