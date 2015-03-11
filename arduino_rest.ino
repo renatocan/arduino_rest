@@ -14,7 +14,7 @@ network configuration using a web-based interface.
 See README for information on how to use.
 
 Author: Renato Candido <renato@liria.com.br>
-Copyright 2013
+Copyright 2015
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,6 +31,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Changelog:
 
+2015-03-11
+Changed initial IP configuration to 192.168.1.150
+
 2013-12-06
 Initial commit.
  
@@ -44,10 +47,10 @@ Initial commit.
 // Seting up the EthernetShield
 // Change the defaults the match your own network
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
-byte ip[] = {10,0,1,100};
+byte ip[] = {192,168,1,150};
 byte subnet[] = {255,255,255,0};
-byte gateway[] = {10,0,0,1};
-byte dnsserver[] = {10,0,0,1};
+byte gateway[] = {192,168,1,1};
+byte dnsserver[] = {192,168,1,1};
 EthernetServer server(80);
 
 // Buffers through which HTML code will flow.
